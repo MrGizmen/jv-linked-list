@@ -10,7 +10,7 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
     private Node nodeAt(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException(
-                    "Index " + index + " is out of bounds for size " + size
+                    "Index " + index + " is out of bound's for size " + size
             );
         }
 
