@@ -8,15 +8,25 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
     private Node tail;
 
     private Node nodeAt(int index) {
-        Node nodeCurrent = head;
         if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index " + index
-                    + " is out of bounds for size " + size);
+            throw new IndexOutOfBoundsException(
+                    "Index " + index + " is out of bounds for size " + size
+            );
         }
-        for (int i = 0; i < index; i++) {
-            nodeCurrent = nodeCurrent.next;
+
+        if (index <= size / 2) {
+            Node current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current;
         }
-        return nodeCurrent;
+
+        Node current = tail;
+        for (int i = size - 1; i > index; i--) {
+            current = current.prev;
+        }
+        return current;
     }
 
     private T unlink(Node current) {
